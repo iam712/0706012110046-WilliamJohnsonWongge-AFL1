@@ -62,7 +62,7 @@ func tokuScreen(){
     }
     
     print("-")
-    print("[B]ack to Main Menu")
+    print("[B]ack to Main Menu ↩️")
     print("Your menu choice?", terminator: " ")
     
     if let menuChoice = readLine(){
@@ -74,7 +74,7 @@ func tokuScreen(){
                 orderScreen(cafe: cafetarias[0], menu: tokuMenus[menuInt-1].0, price: tokuMenus[menuInt-1].1)
             }
             else{
-                print("There is no choice available")
+                print("❌ There is no choice available")
                 tokuScreen()
             }
         }
@@ -91,7 +91,7 @@ func gotriScreen(){
     }
     
     print("-")
-    print("[B]ack to Main Menu")
+    print("[B]ack to Main Menu ↩️")
     print("Your menu choice?", terminator: " ")
     
     if let menuChoice = readLine(){
@@ -103,7 +103,7 @@ func gotriScreen(){
                 orderScreen(cafe: cafetarias[1], menu: gotriMenus[menuInt-1].0, price: gotriMenus[menuInt-1].1)
             }
             else{
-                print("There is no choice available")
+                print("❌ There is no choice available")
                 gotriScreen()
             }
         }
@@ -120,7 +120,7 @@ func madamLieScreen(){
     }
     
     print("-")
-    print("[B]ack to Main Menu")
+    print("[B]ack to Main Menu ↩️")
     print("Your menu choice?", terminator: " ")
     
     if let menuChoice = readLine(){
@@ -132,7 +132,7 @@ func madamLieScreen(){
                 orderScreen(cafe: cafetarias[2], menu: madamLieMenus[menuInt-1].0, price: madamLieMenus[menuInt-1].1)
             }
             else{
-                print("There is no choice available")
+                print("❌ There is no choice available")
                 madamLieScreen()
             }
         }
@@ -149,7 +149,7 @@ func kopteScreen(){
     }
     
     print("-")
-    print("[B]ack to Main Menu")
+    print("[B]ack to Main Menu ↩️")
     print("Your menu choice?", terminator: " ")
     
     if let menuChoice = readLine(){
@@ -161,7 +161,7 @@ func kopteScreen(){
                 orderScreen(cafe: cafetarias[3], menu: kopteMenus[menuInt-1].0, price: kopteMenus[menuInt-1].1)
             }
             else{
-                print("There is no choice available")
+                print("❌ There is no choice available")
                 kopteScreen()
             }
         }
@@ -250,8 +250,8 @@ func shoppingCartScreen(){
     }
     
     print("")
-    print("Press [B] to go back")
-    !shoppingCart.isEmpty ? print("Press [P] to pay") : print("", terminator: "")
+    print("Press [B] to go back ↩️")
+    !shoppingCart.isEmpty ? print("Press [P] to pay 💰") : print("", terminator: "")
     print("Your choice?", terminator: " ")
     
     if let choice = readLine(){
@@ -269,7 +269,7 @@ func shoppingCartScreen(){
 
 func mainMenuScreen(){
     print("")
-    print("Welcome to UC-Walk Cafetaria")
+    print("Welcome to UC-Walk Cafetaria 👨🏿‍🍳👩🏿‍🍳")
     print("Please choose Cafetaria:")
     
     for (index, cafetaria) in cafetarias.enumerated(){
@@ -277,8 +277,8 @@ func mainMenuScreen(){
     }
     
     print("-")
-    print("[S]hopping Cart")
-    print("[Q]uit")
+    print("[S]hopping Cart 🛒")
+    print("[Q]uit ")
     print("Your Cafetaria choice?", terminator: " ")
     
     if let cafetariaChoice = readLine(){
@@ -303,12 +303,12 @@ func mainMenuScreen(){
                 kopteScreen()
                 
             default:
-                print("There is no choice available")
+                print("❌ There is no choice available")
                 mainMenuScreen()
             }
         }
         else {
-            print("There is no choice available")
+            print("❌ There is no choice available")
             mainMenuScreen()
         }
     }
