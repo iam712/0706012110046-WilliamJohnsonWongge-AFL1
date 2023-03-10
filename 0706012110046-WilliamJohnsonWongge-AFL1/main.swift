@@ -182,7 +182,7 @@ func checkoutScreen(){
     print("Your total order: " + String(total))
     print("Press [P] to Pay 💰")
     print("Press [B] to go Back to Cart ")
-    
+    print("Your choice?", terminator: " ")
     if let tes = readLine(){
         if tes == "B" || tes == "b"{
             shoppingCartScreen()
