@@ -7,14 +7,17 @@
 
 import Foundation
 
+
 var cafetarias: [String] = []
 
 var tokuMenus: [(String, Int)] = []
 var gotriMenus: [(String, Int)] = []
 var madamLieMenus: [(String, Int)] = []
 var kopteMenus: [(String, Int)] = []
+
 // cafe, menu, harga, jumlah
 var shoppingCart: [(String, String, Int, Int)] = []
+
 
 func orderScreen(cafe: String, menu: String, price: Int){
     print("")
@@ -169,6 +172,7 @@ func kopteScreen(){
 }
 
 func checkoutScreen(){
+
     var total:Int = 0
     for item in shoppingCart {
         total += (item.2 * item.3)
@@ -176,49 +180,61 @@ func checkoutScreen(){
     
     print("")
     print("Your total order: " + String(total))
+    print("Press [P] to Pay 💰")
+    print("Press [B] to go Back to Cart ")
     
-    while true{
-        print("")
-        print("Enter the amount of money:", terminator: " ")
-        
-        if let moneyInput = readLine(){
-            // Cek tipe
-            if let moneyInt = Int(moneyInput) {
-                if moneyInt == 0 {
-                    // uang nol
-                    print("Payment can't be zero.")
-                }
-                else if moneyInt < 0 {
-                    // negatif
-                    print("Please enter a valid amount.")
-                }
-                else if moneyInt < total{
-                    // uang kurang
-                    print("Please enter a valid amount.")
-                }
-                else {
-                    // uang cukup
-                    print("Your total order: " + String(total))
-                    print("You pay: " + String(moneyInt))
-                    print("Change: " + String(moneyInt - total))
-                    print("")
-                    print("Enjoy your meals!")
+    if let tes = readLine(){
+        if tes == "B" || tes == "b"{
+            shoppingCartScreen()
+        }
+        else if tes == "P" || tes == "p"{
+            while true{
+                print("")
+                print("Enter the amount of money:", terminator: " ")
+                
+                if let moneyInput = readLine(){
+                    // Cek tipe
+                    if let moneyInt = Int(moneyInput) {
+                        if moneyInt == 0 {
+                            // uang nol
+                            print("Payment can't be zero.")
+                        }
+                        else if moneyInt < 0 {
+                            // negatif
+                            print("Please enter a valid amount.")
+                        }
+                        else if moneyInt < total{
+                            // uang kurang
+                            print("Please enter a valid amount.")
+                        }
+                        else {
+                            // uang cukup
+                            print("Your total order: " + String(total))
+                            print("You pay: " + String(moneyInt))
+                            print("Change: " + String(moneyInt - total))
+                            print("")
+                            print("Enjoy your meals!")
+                            
+                            shoppingCart.removeAll()
+                            break
+                        }
+                    }
+
+                    else if moneyInput.trimmingCharacters(in: .whitespaces).isEmpty {
+                        // input kosong
+                        print("Please enter your payment.")
+                    }
                     
-                    shoppingCart.removeAll()
-                    break
+                    else {
+                        // input random string
+                        print("Please enter a valid amount.")
+                    }
                 }
             }
-            else if moneyInput.trimmingCharacters(in: .whitespaces).isEmpty {
-                // input kosong
-                print("Please enter your payment.")
-            }
-            else {
-                // input random string
-                print("Please enter a valid amount.")
-            }
+            mainMenuScreen()
         }
     }
-    mainMenuScreen()
+    
 }
 
 func isOrderFromCafe(ind: Int)-> Bool{
@@ -251,7 +267,7 @@ func shoppingCartScreen(){
     
     print("")
     print("Press [B] to go back ↩️")
-    !shoppingCart.isEmpty ? print("Press [P] to pay 💰") : print("", terminator: "")
+    !shoppingCart.isEmpty ? print("Press [P] to the Checkout Screen ") : print("", terminator: "")
     print("Your choice?", terminator: " ")
     
     if let choice = readLine(){
@@ -262,6 +278,7 @@ func shoppingCartScreen(){
             checkoutScreen()
         }
         else {
+            print("❌ There is no choice available")
             shoppingCartScreen()
         }
     }
@@ -322,7 +339,8 @@ func main(){
     cafetarias.append("Kopte")
     
     // Load Cafetaria Menu
-    // 1. Toku-toku
+    
+    // 1. Tuku-tuku
     tokuMenus.append((String, Int)("Tahu Isi", 3000))
     tokuMenus.append((String, Int)("Nasi Kuning", 10000))
     tokuMenus.append((String, Int)("Nasi Tumpeng", 12000))
