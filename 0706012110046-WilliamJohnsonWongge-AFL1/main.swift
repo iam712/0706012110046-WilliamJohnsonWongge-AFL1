@@ -7,18 +7,22 @@
 
 import Foundation
 
-
+// list cafe yang ditambahkan user
 var cafetarias: [String] = []
 
+// list menu dan harga dari masing - masing cafe yg ditambahkan user
 var tokuMenus: [(String, Int)] = []
 var gotriMenus: [(String, Int)] = []
 var madamLieMenus: [(String, Int)] = []
 var kopteMenus: [(String, Int)] = []
 
-// cafe, menu, harga, jumlah
+// menu dan data - data lain yg ditampung saat user memesan
 var shoppingCart: [(String, String, Int, Int)] = []
 
 
+// setelah menampilkan menu di salah satu cafe, function ini dipakai ketika user memilih memesan salah
+//satu menu dan menginput jumlah yang ingin dipesan setelah itu menu yang dipesan akan dimasukkan ke
+// dalam array shopping cart dengan data" (nama menu, cafe yang mana menu dipesan, harga, dan jumlah)
 func orderScreen(cafe: String, menu: String, price: Int){
     print("")
     print(menu + " @ " + String(price))
@@ -55,6 +59,7 @@ func orderScreen(cafe: String, menu: String, price: Int){
     }
 }
 
+//func untuk menampilkan cafe yang dipilih beserta menu - menunya
 func tokuScreen(){
     print("")
     print("Welcome back to Tuku-Tuku!")
@@ -84,6 +89,7 @@ func tokuScreen(){
     }
 }
 
+//func untuk menampilkan cafe yang dipilih beserta menu - menunya
 func gotriScreen(){
     print("")
     print("Welcome back to Gotri!")
@@ -113,6 +119,7 @@ func gotriScreen(){
     }
 }
 
+//func untuk menampilkan cafe yang dipilih beserta menu - menunya
 func madamLieScreen(){
     print("")
     print("Welcome back to Madam Lie!")
@@ -142,6 +149,7 @@ func madamLieScreen(){
     }
 }
 
+//func untuk menampilkan cafe yang dipilih beserta menu - menunya
 func kopteScreen(){
     print("")
     print("Welcome back to Kopte!")
@@ -171,8 +179,10 @@ func kopteScreen(){
     }
 }
 
+// func untuk menghitung & bayar total yang dipesan
 func checkoutScreen(){
 
+    // menghitung semua makanan yg dipesan di shopping cart dengan dikalikan harga dan jumlah pesanan 
     var total:Int = 0
     for item in shoppingCart {
         total += (item.2 * item.3)
@@ -237,6 +247,8 @@ func checkoutScreen(){
     
 }
 
+// untuk memastikan cafe di dalam array sama dengan cafe yang masuk di shopping cart saat user
+//memesan menu dari cafe tertentu
 func isOrderFromCafe(ind: Int)-> Bool{
     for item in shoppingCart {
         if item.0 == cafetarias[ind] {
@@ -246,6 +258,7 @@ func isOrderFromCafe(ind: Int)-> Bool{
     return false
 }
 
+// menampilkan menu dan jumlah yang dipesan dari masing - masing cafe dari array shopping cart
 func shoppingCartScreen(){
     print("")
     
@@ -284,11 +297,13 @@ func shoppingCartScreen(){
     }
 }
 
+
 func mainMenuScreen(){
     print("")
     print("Welcome to UC-Walk Cafetaria 👨🏿‍🍳👩🏿‍🍳")
     print("Please choose Cafetaria:")
     
+    // print cafe yang tersedia di dalam array
     for (index, cafetaria) in cafetarias.enumerated(){
         print("[" + String(index+1) + "] " + cafetaria)
     }
@@ -298,13 +313,17 @@ func mainMenuScreen(){
     print("[Q]uit ")
     print("Your Cafetaria choice?", terminator: " ")
     
+    
     if let cafetariaChoice = readLine(){
+        // tombol q untuk keluar dari program
         if cafetariaChoice == "Q" || cafetariaChoice == "q" {
             exit(0)
         }
+        // tombol s untuk masuk ke shopping cart
         else if cafetariaChoice == "S" || cafetariaChoice == "s" {
             shoppingCartScreen()
         }
+        // pencet setiap nomor untuk masuk ke masing" cafe
         else if let ccInt = Int(cafetariaChoice) {
             switch ccInt {
             case 1:
@@ -332,13 +351,13 @@ func mainMenuScreen(){
 }
 
 func main(){
-    // Load Cafetaria
+    // menambahkan cafe ke dalam array cafetarias
     cafetarias.append("Tuku-tuku")
     cafetarias.append("Gotri")
     cafetarias.append("Madam Lie")
     cafetarias.append("Kopte")
     
-    // Load Cafetaria Menu
+    // menambahkan menu & harganya ke dalam array masing" cafe
     
     // 1. Tuku-tuku
     tokuMenus.append((String, Int)("Tahu Isi", 3000))
@@ -366,5 +385,6 @@ func main(){
     
     mainMenuScreen()
 }
+
 
 main()
