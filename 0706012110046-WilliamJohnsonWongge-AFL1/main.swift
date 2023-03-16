@@ -89,6 +89,10 @@ func tokuScreen(){
                 tokuScreen()
             }
         }
+        else{
+            print("❌ There is no choice available")
+            tokuScreen()
+        }
     }
 }
 
@@ -118,6 +122,10 @@ func gotriScreen(){
                 print("❌ There is no choice available")
                 gotriScreen()
             }
+        }
+        else{
+            print("❌ There is no choice available")
+            gotriScreen()
         }
     }
 }
@@ -149,6 +157,10 @@ func madamLieScreen(){
                 madamLieScreen()
             }
         }
+        else{
+            print("❌ There is no choice available")
+            madamLieScreen()
+        }
     }
 }
 
@@ -179,6 +191,10 @@ func kopteScreen(){
                 kopteScreen()
             }
         }
+        else{
+            print("❌ There is no choice available")
+            kopteScreen()
+        }
     }
 }
 
@@ -208,6 +224,10 @@ func raburiScreen(){
                 print("❌ There is no choice available")
                 raburiScreen()
             }
+        }
+        else {
+            print("❌ There is no choice available")
+            raburiScreen()
         }
     }
 }
