@@ -15,7 +15,7 @@ var tokuMenus: [(String, Int)] = []
 var gotriMenus: [(String, Int)] = []
 var madamLieMenus: [(String, Int)] = []
 var kopteMenus: [(String, Int)] = []
-
+var raburiMenus: [(String, Int)] = []
 // menu dan data - data lain yg ditampung saat user memesan
 var shoppingCart: [(String, String, Int, Int)] = []
 
@@ -45,6 +45,9 @@ func orderScreen(cafe: String, menu: String, price: Int){
                 }
                 else if cafe == cafetarias[3]{
                     kopteScreen()
+                }
+                else if cafe == cafetarias[4]{
+                    raburiScreen()
                 }
             }
             else {
@@ -174,6 +177,36 @@ func kopteScreen(){
             else{
                 print("❌ There is no choice available")
                 kopteScreen()
+            }
+        }
+    }
+}
+
+//func untuk menampilkan cafe yang dipilih beserta menu - menunya
+func raburiScreen(){
+    print("")
+    print("Welcome back to Raburi!")
+    print("What would you like to order?")
+    
+    for(index, menu) in raburiMenus.enumerated(){
+        print("[" + String(index+1) + "] " + menu.0)
+    }
+    
+    print("-")
+    print("[B]ack to Main Menu ↩️")
+    print("Your menu choice?", terminator: " ")
+    
+    if let menuChoice = readLine(){
+        if menuChoice == "B" || menuChoice == "b"{
+            mainMenuScreen()
+        }
+        else if let menuInt = Int(menuChoice) {
+            if menuInt > 0 && menuInt <= raburiMenus.count{
+                orderScreen(cafe: cafetarias[4], menu: raburiMenus[menuInt-1].0, price: raburiMenus[menuInt-1].1)
+            }
+            else{
+                print("❌ There is no choice available")
+                raburiScreen()
             }
         }
     }
@@ -337,6 +370,9 @@ func mainMenuScreen(){
                 
             case 4:
                 kopteScreen()
+            
+            case 5:
+                raburiScreen()
                 
             default:
                 print("❌ There is no choice available")
@@ -356,6 +392,7 @@ func main(){
     cafetarias.append("Gotri")
     cafetarias.append("Madam Lie")
     cafetarias.append("Kopte")
+    cafetarias.append("Raburi")
     
     // menambahkan menu & harganya ke dalam array masing" cafe
     
@@ -382,6 +419,13 @@ func main(){
     kopteMenus.append((String, Int)("Kopi Tarik Cincau", 14000))
     kopteMenus.append((String, Int)("Kopi Teh Tarik", 15000))
     kopteMenus.append((String, Int)("Kopi Coklat Tarik", 16000))
+    
+    // 5. Raburi
+    raburiMenus.append((String, Int)("Curry", 35000))
+    raburiMenus.append((String, Int)("Ramen", 45000))
+    raburiMenus.append((String, Int)("Katsu", 30000))
+    raburiMenus.append((String, Int)("Wintermelon Tea", 25000))
+    
     
     mainMenuScreen()
 }
