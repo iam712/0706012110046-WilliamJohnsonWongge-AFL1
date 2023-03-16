@@ -262,7 +262,6 @@ func checkoutScreen(){
                             break
                         }
                     }
-
                     else if moneyInput.trimmingCharacters(in: .whitespaces).isEmpty {
                         // input kosong
                         print("Please enter your payment.")
@@ -275,6 +274,10 @@ func checkoutScreen(){
                 }
             }
             mainMenuScreen()
+        }
+        else {
+            print("❌ There is no choice available")
+            checkoutScreen()
         }
     }
     
