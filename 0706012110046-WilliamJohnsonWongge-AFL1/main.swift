@@ -118,6 +118,7 @@ func gotriScreen(){
             if menuInt > 0 && menuInt <= gotriMenus.count {
                 orderScreen(cafe: cafetarias[1], menu: gotriMenus[menuInt-1].0, price: gotriMenus[menuInt-1].1)
             }
+            //tes
             else{
                 print("❌ There is no choice available")
                 gotriScreen()
